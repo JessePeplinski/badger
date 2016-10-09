@@ -1,25 +1,55 @@
 <head>
   <title>simple-todos</title>
+  <link href="main.css" rel="stylesheet">
 </head>
 
 <body>
   <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
-  {{> info}}
+    <!-- Move to own template -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Card Projects -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="img-responsive" src="http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7TDlCYzRROE84YWM/materialdesign_introduction.png">
+                        <span class="card-title">Material Cards</span>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p>Cards for display in portfolio style material design by Google.</p>
+                        <div class="icon-wrapper"><i class="fa fa-bolt custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+                    </div>
+                    
+                   <!--  <div class="card-action">
+                        <a href="#" target="new_blank">Link</a>
+                        <a href="#" target="new_blank">Link</a>
+                        <a href="#" target="new_blank">Link</a>
+                        <a href="#" target="new_blank">Link</a>
+                        <a href="#" target="new_blank">Link</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- {{> members}} -->
+
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+<!-- <template name="users">
+  <p> This should display the information of the users</p>
+  <p>{{currentUser}}</p>
+</template> -->
+
+
+<template name="members">
+  <p>This should display the talks of the users</p>
+  {{#each talks}}
+    <p>Presenter: {{name}}</p>
+    <p>Talk Name: </p>
+    <p>Description: </p>
+  {{/each}}
 </template>
