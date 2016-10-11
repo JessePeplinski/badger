@@ -19,25 +19,25 @@ Template.body.helpers({
   },
 });
 
-Template.body.events({
-  'submit .new-task'(event) {
-    // Prevent default browser form submit
-    event.preventDefault();
+// Template.body.events({
+//   'submit .new-task'(event) {
+//     // Prevent default browser form submit
+//     event.preventDefault();
  
-    // Get value from form element
-    const target = event.target;
-    const text = target.text.value;
+//     // Get value from form element
+//     const target = event.target;
+//     const text = target.text.value;
  
-    // Insert a task into the collection
-    Tasks.insert({
-      text,
-      createdAt: new Date(), // current time
-    });
+//     // Insert a task into the collection
+//     Tasks.insert({
+//       text,
+//       createdAt: new Date(), // current time
+//     });
  
-    // Clear form
-    target.text.value = '';
-  },
-});
+//     // Clear form
+//     target.text.value = '';
+//   },
+// });
 
 
 Template.body.events({
@@ -93,15 +93,6 @@ Template.body.events({
   // Add the talk to the user count
   'click .submit-talk'() {
 
-    // var lightning = $('.lightning').text();
-    // var type = $('.type').text();
-    // var description = $('.description').text();
-
-    // console.log(lightning);
-    // console.log(type);
-    // console.log(description);
-
-
     // TALKS
     var talkId = this._id;
     Session.set('selectedTalkId', talkId);
@@ -123,6 +114,9 @@ Template.body.events({
 
     var users = User.find();
 
+    // TODO - dont add same named members
+    // TODO what if name and type are the same? need to do some description checking as well (not equal each other maybe)
+
     users.forEach(function(theUser) {
       console.log("USER ITERATION: The id is " + theUser._id + " The user name is " + theUser.name + ". Lightning count is " + theUser.lightningCount + ". Event count is " + theUser.eventCount  + ". AnnouncementCount is " + theUser.announcementCount);
 
@@ -132,10 +126,17 @@ Template.body.events({
           theUser.lightningCount = theUser.lightningCount + 1;
           User.update({_id : theUser._id}, {$set:{lightningCount: theUser.lightningCount}});  
         }
+        else if(selectedTalkType === "Upcoming Event") {
+          theUser.eventCount = theUser.eventCount + 1;
+          User.update({_id : theUser._id}, {$set:{eventCount: theUser.eventCount}});  
+        }
+
+        else if(selectedTalkType === "Announcement") {
+          theUser.announcementCount = theUser.announcementCount + 1;
+          User.update({_id : theUser._id}, {$set:{announcementCount: theUser.announcementCount}});  
+        }
         // ELSE IF (etc...)
       }
-
-       
     });
 
     // Archive the talk to REST API

@@ -12,9 +12,17 @@
       <form class="new-talk">
         <input type="text" name="name" placeholder="Your Name" />
         <input type="text" name="type" placeholder="Talk Type" />
+  <!--       <select>
+          <option>Hot Dog, Fries and a Soda</option>
+          <option>Burger, Shake and a Smile</option>
+          <option>Sugar, Spice and all things nice</option>
+        </select> -->
         <input type="text" name="description" placeholder="description" />
         <input type="submit" value="Add Talk">
       </form>
+
+    
+
 
       <!-- Add a new member -->
        <form class="new-member">
@@ -134,9 +142,9 @@
 
 <template name="thetalk">
    <h3>Talk</h3>
-    <button class="delete-talk">&times;</button>
-    <button class="submit-talk">Submit</button>
     <span class="lightning">{{name}}</span>
     <span class="type">{{type}}</span>
     <span class="description">{{description}}</span>
+    <button class="submit-talk">Submit</button>
+    <button class="delete-talk">&times;</button>
 </template>
