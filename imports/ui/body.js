@@ -71,18 +71,21 @@ Template.body.events({
 
     User.insert({
         name: theName,
+        lightningCount: 0,
+        eventCount: 0,
+        announcementCount: 0
     });
  
     // Clear form after being added to db
     target.name.value = '';
   },
 
-   // Delete the id
+   // Delete the talk
   'click .delete-talk'() {
     Talk.remove(this._id);
   },
 
-  // Delete the id
+  // Delete the member
   'click .delete-member'() {
     User.remove(this._id);
   },
@@ -90,72 +93,66 @@ Template.body.events({
   // Add the talk to the user count
   'click .submit-talk'() {
 
+    // var lightning = $('.lightning').text();
+    // var type = $('.type').text();
+    // var description = $('.description').text();
 
-  	// Iterate through the values of the database
-  	var talks = Talk.find();
-  	var users = User.find();
-
-  	// Update this value in the database
-	// User.update(User._id, {
-	// 	$set: {lightningCount : 5},
-	// });
-
-	// Cant call this - need to get the ID of the User and not the Talk
-
-	// console.log(this);
-
-	console.log("lightingCount should be updated by 5");
-
-	// users.forEach(function(theUser) {
-	// 	console.log("USER ITERATION: The user name is " + theUser.name + ". Lightning count is " + theUser.lightningCount + ". Event count is " + theUser.eventCount  + ". AnnouncementCount is " + theUser.announcementCount);
-	// });
-	// console.log(this);
+    // console.log(lightning);
+    // console.log(type);
+    // console.log(description);
 
 
-  
+    // TALKS
+    var talkId = this._id;
+    Session.set('selectedTalkId', talkId);
+    var selectedTalkId = Session.get('selectedTalkId');
+    console.log(selectedTalkId);
 
-  	users.forEach(function(theUser) {
-  		talks.forEach(function(theTalk) {
-  		
-  		console.log("TALK ITERATION: The user name is " + theTalk.name + ". Type is " + theTalk.type + ". Descirption is " + theTalk.description + ". Added to user is "+ theTalk.addedToUser);
 
-		console.log("USER ITERATION: The user name is " + theUser.name + ". Lightning count is " + theUser.lightningCount + ". Event count is " + theUser.eventCount  + ". AnnouncementCount is " + theUser.announcementCount);
+    var talkName = this.name;
+    Session.set('selectedTalkName', talkName);
+    var selectedTalkName = Session.get('selectedTalkName');
+    console.log(selectedTalkName);
 
-		if(theUser.name === theTalk.name && theTalk.addedToUser === 0) {
-			// console.log("GOT INTO FIRST IF");
-			// console.log(theTalk.type +" is the type name");
-			if(theTalk.type === "Lightning Talk") {
-				console.log("TRYING TO ADD LIGHTING TALK");
-				theUser.lightningCount = theUser.lightningCount + 1;
+    var talkType = this.type;
+    Session.set('selectedTalkType', talkType);
+    var selectedTalkType = Session.get('selectedTalkType');
+    console.log(selectedTalkType);
 
-				// Set the talk to added_to_user to 1
-				
-				// console.log(this._id);
+    // USERS
 
-				// Update this value in the database
-				User.update(theUser._id, {
-      				$set: {lightningCount : theUser.lightningCount},
-    			});
+    var users = User.find();
 
-				console.log(theUser.lightningCount + " light talk value is 1; Light count should be incremented by 1!!");
-			}
-		}
+    users.forEach(function(theUser) {
+      console.log("USER ITERATION: The id is " + theUser._id + " The user name is " + theUser.name + ". Lightning count is " + theUser.lightningCount + ". Event count is " + theUser.eventCount  + ". AnnouncementCount is " + theUser.announcementCount);
 
-  		});
-  	});
-  	},
-  	
+      // (If theUser.name === talkName)
+      if(theUser.name === selectedTalkName) {
+        if(selectedTalkType === "Lightning Talk") {
+          theUser.lightningCount = theUser.lightningCount + 1;
+          User.update({_id : theUser._id}, {$set:{lightningCount: theUser.lightningCount}});  
+        }
+        // ELSE IF (etc...)
+      }
 
-  	// IF(name from talk == name from user && addedToUser from Talk == 0)
-  		// IF(type from talk is lightning talk)
-  			// Increment lightingCount from User
-  			// Set incremented to user = 1
-  		// ELSE IF(type from talk is event)
-  			// Increment lightingCount from User
-  			// Set incremented to user = 1
-  		// ELSE IF(type from talk is announcement)
-  			// Increment lightingCount from User
-  			// Set incremented to user = 1
+       
+    });
+
+    // Archive the talk to REST API
+
+  },
+    
+
+    // IF(name from talk == name from user && addedToUser from Talk == 0)
+      // IF(type from talk is lightning talk)
+        // Increment lightingCount from User
+        // Set incremented to user = 1
+      // ELSE IF(type from talk is event)
+        // Increment lightingCount from User
+        // Set incremented to user = 1
+      // ELSE IF(type from talk is announcement)
+        // Increment lightingCount from User
+        // Set incremented to user = 1
     
   
 });

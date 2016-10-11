@@ -8,6 +8,7 @@
         <input type="text" name="text" placeholder="Type to add new tasks" />
       </form> -->
 
+      <!-- Add a new talk -->
       <form class="new-talk">
         <input type="text" name="name" placeholder="Your Name" />
         <input type="text" name="type" placeholder="Talk Type" />
@@ -15,6 +16,7 @@
         <input type="submit" value="Add Talk">
       </form>
 
+      <!-- Add a new member -->
        <form class="new-member">
         <input type="text" name="name" placeholder="Your Name" />
         <input type="submit" value="Add Member">
@@ -95,20 +97,23 @@
                         <div class="icon-container">
                           <div class="icon-wrapper">
                             <i class="fa fa-bolt custom-icon custom-icon-bolt"><span class="fix-editor">&nbsp;</span></i>
-                          </div>x{{lightningCount}}
+                          </div>
+                          <span>x{{lightningCount}}</span>
                         </div>
 
                         <div class="icon-container">
                           <div class="icon-wrapper">
                             <i class="fa fa-calendar-o custom-icon"><span class="fix-editor">&nbsp;</span></i>
-                          </div>x{{eventCount}}
+                          </div>
+                          <span>x{{eventCount}}</span>
                         </div>
 
 
                         <div class="icon-container">
                           <div class="icon-wrapper">
                             <i class="fa fa-bullhorn custom-icon"><span class="fix-editor">&nbsp;</span></i>
-                          </div>x{{announcementCount}}
+                          </div>
+                          <span>x{{announcementCount}}</span>
                         </div>
                     </div>
 
@@ -131,5 +136,7 @@
    <h3>Talk</h3>
     <button class="delete-talk">&times;</button>
     <button class="submit-talk">Submit</button>
-    <span>{{name}} {{type}} {{description}}</span>
+    <span class="lightning">{{name}}</span>
+    <span class="type">{{type}}</span>
+    <span class="description">{{description}}</span>
 </template>
