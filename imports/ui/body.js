@@ -56,6 +56,7 @@ Template.body.events({
         type: theType,
         description : theDescription,
         url: theUrl,
+        hidden: "false",
         addedToUser : 0
     });
  
@@ -71,11 +72,13 @@ Template.body.events({
 
     var theName = event.target.name.value;
 
+    // TODO Add array of lightningTalkNames or just create relation to it
     User.insert({
         name: theName,
         lightningCount: 0,
         eventCount: 0,
         announcementCount: 0
+
     });
  
     // Clear form after being added to db
@@ -112,6 +115,13 @@ Template.body.events({
     var selectedTalkType = Session.get('selectedTalkType');
     console.log(selectedTalkType);
 
+    var hidden = this.hidden;
+    Session.set('selectedHidden', hidden);
+    var selectedHidden = Session.get('selectedHidden');
+    console.log(selectedHidden);
+
+    Talk.update({_id: talkId}, {$set:{hidden: "hidden"}}); 
+
     // USERS
 
     var users = User.find();
@@ -140,6 +150,8 @@ Template.body.events({
         // ELSE IF (etc...)
       }
     });
+
+
 
     // Archive the talk to REST API
 

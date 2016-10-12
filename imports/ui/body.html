@@ -142,10 +142,12 @@
 </template>
 
 <template name="thetalk">
+<div {{hidden}}>
    <h3>Talk</h3>
     <span class="lightning">{{name}}</span>
     <span class="type">{{type}}</span>
     <a href ="{{url}}"><span class="description">{{description}}</span></a>
     <button class="submit-talk">Submit</button>
     <button class="delete-talk">&times;</button>
+</div>
 </template>
