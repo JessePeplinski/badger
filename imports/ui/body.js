@@ -48,19 +48,21 @@ Template.body.events({
     var theName = event.target.name.value;
     var theType = event.target.type.value;
     var theDescription = event.target.description.value;
+    var theUrl = event.target.url.value;
     
 
     Talk.insert({
         name: theName,
         type: theType,
         description : theDescription,
+        url: theUrl,
         addedToUser : 0
     });
  
     // Clear form after being added to db
     target.name.value = '';
     target.type.value = '';
-    target.description.value = '';
+    target.url.value = '';
   },
 
   'submit .new-member'(event) {
