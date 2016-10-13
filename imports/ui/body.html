@@ -1,116 +1,95 @@
 <body>
-
     {{> navbar}}
-  <div class="container-fluid">
-    <header>
-
-<!--       <form class="new-task">
-        <input type="text" name="text" placeholder="Type to add new tasks" />
-      </form> -->
-
-      <!-- Add a new talk -->
-<!--       <form class="new-talk">
-        <input type="text" name="name" placeholder="Your Name" />
-        <select name="type">
-          <option value="invalidtalk" hidden>Select talk type</option>
-          <option value="Lightning Talk">Lightning Talk</option>
-          <option value="Announcement">Announcement</option>
-          <option value="Upcoming Event">Upcoming Event</option>
-        </select>
-        <input type="text" name="description" placeholder="Description" />
-        <input type="text" name="url" placeholder="URL" />
-        <input type="submit" value="Add Talk">
-      </form> -->
-
-
-      <!-- Add a new member -->
-       <form class="new-member">
-        <input type="text" name="name" placeholder="Your Name" />
-        <input type="submit" value="Add Member">
-      </form>
-    </header>
-
-  
-    <h2 class="text-center">Members</h2>
-    <!-- Move to own template -->
-        <div class="row">
-         
-    {{#each user}}
-      {{> member}}
-    {{/each}}
-    </div>
-
-
-    <h2 class="text-center">Talks</h2>
-    <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th></th>
-      </tr>
-    </thead>
-
-        <tfoot>
-          <tr>
-          <form class="new-talk">
-            <td><input type="text" name="name" placeholder="Your Name" /></td>
-            <td>
-               <select name="type">
-                <option value="invalidtalk" hidden>Select talk type</option>
-                <option value="Lightning Talk">Lightning Talk</option>
-                <option value="Announcement">Announcement</option>
-                <option value="Upcoming Event">Upcoming Event</option>
-              </select>
-            </td>
-
-            <td><input type="text" name="description" placeholder="Description" /></td>
-            <td><input type="text" name="url" placeholder="URL" /></td>
-            <td><input type="submit" value="Add Talk"></td>
-
+    <div class="container-fluid">
+            <!--       <form class="new-task">
+                <input type="text" name="text" placeholder="Type to add new tasks" />
+                </form> -->
+            <!-- Add a new talk -->
+            <!--       <form class="new-talk">
+                <input type="text" name="name" placeholder="Your Name" />
+                <select name="type">
+                  <option value="invalidtalk" hidden>Select talk type</option>
+                  <option value="Lightning Talk">Lightning Talk</option>
+                  <option value="Announcement">Announcement</option>
+                  <option value="Upcoming Event">Upcoming Event</option>
+                </select>
+                <input type="text" name="description" placeholder="Description" />
+                <input type="text" name="url" placeholder="URL" />
+                <input type="submit" value="Add Talk">
+                </form> -->
+            <!-- Add a new member -->
+            <form class="new-member">
+                <input type="text" name="name" placeholder="Your Name" />
+                <input type="submit" value="Add Member">
             </form>
-          </tr>
-        </tfoot>
-
-      <tbody>
-        {{#each talk}}
-          {{> thetalk}}
-        {{/each}}
-      </tbody>
-
- 
-      </table>
-
-
-<!--    <h2>Talks</h2>
-   <ul>
-     {{#each talk}}
-        {{> thetalk}}
-      {{/each}}
-   </ul> -->
- 
-<!--     <h2>Tasks</h2>
-    <ul>
-      {{#each tasks}}
-        {{> task}}
-      {{/each}}
-    </ul> -->
-  </div>
+        
+        <h2 class="text-center">Members</h2>
+        <!-- Move to own template -->
+        <div class="row">
+            {{#each user}}
+            {{> member}}
+            {{/each}}
+        </div>
+        <h2 class="text-center">Talks</h2>
+        <!-- <form method="POST" id="my-form" class="new-talk"></form> -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <form class="new-talk">
+                        <td><input type="text" name="name" placeholder="Your Name" /></td>
+                        <td>
+                            <select name="type">
+                                <option value="invalidtalk" hidden>Select talk type</option>
+                                <option value="Lightning Talk">Lightning Talk</option>
+                                <option value="Announcement">Announcement</option>
+                                <option value="Upcoming Event">Upcoming Event</option>
+                            </select>
+                        </td>
+                        <td><input type="text" name="description" placeholder="Description" /></td>
+                        <td><input type="text" name="url" placeholder="URL" /></td>
+                        <td><input type="submit" value="Add Talk"></td>
+                    </form>
+                </tr>
+            </tfoot>
+            <tbody>
+                {{#each talk}}
+                {{> thetalk}}
+                {{/each}}
+            </tbody>
+        </table>
+        <!--    <h2>Talks</h2>
+            <ul>
+              {{#each talk}}
+                 {{> thetalk}}
+               {{/each}}
+            </ul> -->
+        <!--     <h2>Tasks</h2>
+            <ul>
+              {{#each tasks}}
+                {{> task}}
+              {{/each}}
+            </ul> -->
+    </div>
 </body>
-
-
 <template name="navbar">
-<!-- Navigation -->
+    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">Badger</a>
             </div>
@@ -130,7 +109,6 @@
         <!-- /.container -->
     </nav>
 </template>
-
 <template name="member">
     <!-- Move to own template -->
     <!-- Card Projects -->
@@ -140,34 +118,27 @@
                 <img class="img-responsive" src="http://toogoodbuilt.com/wp-content/uploads/2015/02/user-placeholder.jpg">
                 <span class="card-title">{{name}}</span>
             </div>
-            
             <div class="card-content">
-
                 <div class="icon-container">
-                  <div class="icon-wrapper">
-                    <i class="fa fa-bolt custom-icon custom-icon-bolt"><span class="fix-editor">&nbsp;</span></i>
-                  </div>
-                  <span>x{{lightningCount}}</span>
+                    <div class="icon-wrapper">
+                        <i class="fa fa-bolt custom-icon custom-icon-bolt"><span class="fix-editor">&nbsp;</span></i>
+                    </div>
+                    <span>x{{lightningCount}}</span>
                 </div>
-
                 <div class="icon-container">
-                  <div class="icon-wrapper">
-                    <i class="fa fa-calendar-o custom-icon"><span class="fix-editor">&nbsp;</span></i>
-                  </div>
-                  <span>x{{eventCount}}</span>
+                    <div class="icon-wrapper">
+                        <i class="fa fa-calendar-o custom-icon"><span class="fix-editor">&nbsp;</span></i>
+                    </div>
+                    <span>x{{eventCount}}</span>
                 </div>
-
-
                 <div class="icon-container">
-                  <div class="icon-wrapper">
-                    <i class="fa fa-bullhorn custom-icon"><span class="fix-editor">&nbsp;</span></i>
-                  </div>
-                  <span>x{{announcementCount}}</span>
+                    <div class="icon-wrapper">
+                        <i class="fa fa-bullhorn custom-icon"><span class="fix-editor">&nbsp;</span></i>
+                    </div>
+                    <span>x{{announcementCount}}</span>
                 </div>
             </div>
-
             <button class="delete-member">&times;</button>
-            
             <div class="card-action">
                 <a href="#" target="new_blank">Link</a>
                 <a href="#" target="new_blank">Link</a>
@@ -178,13 +149,12 @@
         </div>
     </div>
 </template>
-
 <template name="thetalk">
-<tr {{hidden}}>
+    <tr {{hidden}}>
     <td class="lightning">{{name}}</td>
     <td class="type">{{type}}</td>
     <td class="description"><a href ="{{url}}">{{description}}</a></td>
-    <button class="submit-talk">Submit</button>
+    <button form="my_form" class="submit-talk">Submit</button>
     <button class="delete-talk">&times;</button>
-</tr>
+    </tr>
 </template>
