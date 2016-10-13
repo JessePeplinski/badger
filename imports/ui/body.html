@@ -9,9 +9,8 @@
       </form> -->
 
       <!-- Add a new talk -->
-      <form class="new-talk">
+<!--       <form class="new-talk">
         <input type="text" name="name" placeholder="Your Name" />
-        <!-- <input type="text" name="type" placeholder="Talk Type" /> -->
         <select name="type">
           <option value="invalidtalk" hidden>Select talk type</option>
           <option value="Lightning Talk">Lightning Talk</option>
@@ -21,7 +20,8 @@
         <input type="text" name="description" placeholder="Description" />
         <input type="text" name="url" placeholder="URL" />
         <input type="submit" value="Add Talk">
-      </form>
+      </form> -->
+
 
       <!-- Add a new member -->
        <form class="new-member">
@@ -31,17 +31,64 @@
     </header>
 
   
-    <h2>Members</h2>
+    <h2 class="text-center">Members</h2>
+    <!-- Move to own template -->
+        <div class="row">
+         
     {{#each user}}
       {{> member}}
     {{/each}}
+    </div>
 
-   <h2>Talks</h2>
+
+    <h2 class="text-center">Talks</h2>
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+
+        <tfoot>
+          <tr>
+          <form class="new-talk">
+            <td><input type="text" name="name" placeholder="Your Name" /></td>
+            <td>
+               <select name="type">
+                <option value="invalidtalk" hidden>Select talk type</option>
+                <option value="Lightning Talk">Lightning Talk</option>
+                <option value="Announcement">Announcement</option>
+                <option value="Upcoming Event">Upcoming Event</option>
+              </select>
+            </td>
+
+            <td><input type="text" name="description" placeholder="Description" /></td>
+            <td><input type="text" name="url" placeholder="URL" /></td>
+            <td><input type="submit" value="Add Talk"></td>
+
+            </form>
+          </tr>
+        </tfoot>
+
+      <tbody>
+        {{#each talk}}
+          {{> thetalk}}
+        {{/each}}
+      </tbody>
+
+ 
+      </table>
+
+
+<!--    <h2>Talks</h2>
    <ul>
      {{#each talk}}
         {{> thetalk}}
       {{/each}}
-   </ul>
+   </ul> -->
  
 <!--     <h2>Tasks</h2>
     <ul>
@@ -86,61 +133,58 @@
 
 <template name="member">
     <!-- Move to own template -->
-        <div class="row">
-            <!-- Card Projects -->
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-image">
-                        <img class="img-responsive" src="http://toogoodbuilt.com/wp-content/uploads/2015/02/user-placeholder.jpg">
-                        <span class="card-title">{{name}}</span>
-                    </div>
-                    
-                    <div class="card-content">
+    <!-- Card Projects -->
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-image">
+                <img class="img-responsive" src="http://toogoodbuilt.com/wp-content/uploads/2015/02/user-placeholder.jpg">
+                <span class="card-title">{{name}}</span>
+            </div>
+            
+            <div class="card-content">
 
-                        <div class="icon-container">
-                          <div class="icon-wrapper">
-                            <i class="fa fa-bolt custom-icon custom-icon-bolt"><span class="fix-editor">&nbsp;</span></i>
-                          </div>
-                          <span>x{{lightningCount}}</span>
-                        </div>
+                <div class="icon-container">
+                  <div class="icon-wrapper">
+                    <i class="fa fa-bolt custom-icon custom-icon-bolt"><span class="fix-editor">&nbsp;</span></i>
+                  </div>
+                  <span>x{{lightningCount}}</span>
+                </div>
 
-                        <div class="icon-container">
-                          <div class="icon-wrapper">
-                            <i class="fa fa-calendar-o custom-icon"><span class="fix-editor">&nbsp;</span></i>
-                          </div>
-                          <span>x{{eventCount}}</span>
-                        </div>
+                <div class="icon-container">
+                  <div class="icon-wrapper">
+                    <i class="fa fa-calendar-o custom-icon"><span class="fix-editor">&nbsp;</span></i>
+                  </div>
+                  <span>x{{eventCount}}</span>
+                </div>
 
 
-                        <div class="icon-container">
-                          <div class="icon-wrapper">
-                            <i class="fa fa-bullhorn custom-icon"><span class="fix-editor">&nbsp;</span></i>
-                          </div>
-                          <span>x{{announcementCount}}</span>
-                        </div>
-                    </div>
-
-                    <button class="delete-member">&times;</button>
-                    
-                    <div class="card-action">
-                        <a href="#" target="new_blank">Link</a>
-                        <a href="#" target="new_blank">Link</a>
-                        <a href="#" target="new_blank">Link</a>
-                        <a href="#" target="new_blank">Link</a>
-                        <a href="#" target="new_blank">Link</a>
-                    </div>
+                <div class="icon-container">
+                  <div class="icon-wrapper">
+                    <i class="fa fa-bullhorn custom-icon"><span class="fix-editor">&nbsp;</span></i>
+                  </div>
+                  <span>x{{announcementCount}}</span>
                 </div>
             </div>
+
+            <button class="delete-member">&times;</button>
+            
+            <div class="card-action">
+                <a href="#" target="new_blank">Link</a>
+                <a href="#" target="new_blank">Link</a>
+                <a href="#" target="new_blank">Link</a>
+                <a href="#" target="new_blank">Link</a>
+                <a href="#" target="new_blank">Link</a>
+            </div>
         </div>
+    </div>
 </template>
 
 <template name="thetalk">
-<div {{hidden}}>
-   <h3>Talk</h3>
-    <span class="lightning">{{name}}</span>
-    <span class="type">{{type}}</span>
-    <a href ="{{url}}"><span class="description">{{description}}</span></a>
+<tr {{hidden}}>
+    <td class="lightning">{{name}}</td>
+    <td class="type">{{type}}</td>
+    <td class="description"><a href ="{{url}}">{{description}}</a></td>
     <button class="submit-talk">Submit</button>
     <button class="delete-talk">&times;</button>
-</div>
+</tr>
 </template>

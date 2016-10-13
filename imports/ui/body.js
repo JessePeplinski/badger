@@ -53,9 +53,12 @@ Template.body.events({
     if(theType === "invalidtalk") {
       alert("Enter a talk type!");
     }
-    
+
     else {
 
+
+      // TODO insert createdAt into db
+      // TODO create completed at into db
       Talk.insert({
           name: theName,
           type: theType,
@@ -65,12 +68,9 @@ Template.body.events({
           addedToUser : 0
       });
 
+      // Clear form after being added to db
       event.target.reset();
-    }
- 
-    // Clear form after being added to db
-   
-
+    }  
   },
 
   'submit .new-member'(event) {
