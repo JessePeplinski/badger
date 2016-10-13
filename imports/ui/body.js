@@ -104,7 +104,6 @@ Template.body.events({
     var selectedTalkId = Session.get('selectedTalkId');
     console.log(selectedTalkId);
 
-
     var talkName = this.name;
     Session.set('selectedTalkName', talkName);
     var selectedTalkName = Session.get('selectedTalkName');
@@ -123,7 +122,6 @@ Template.body.events({
     Talk.update({_id: talkId}, {$set:{hidden: "hidden"}}); 
 
     // USERS
-
     var users = User.find();
 
     // TODO - dont add same named members

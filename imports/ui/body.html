@@ -1,7 +1,7 @@
 <body>
 
     {{> navbar}}
-<!--   <div class="container"> -->
+  <div class="container-fluid">
     <header>
 
 <!--       <form class="new-task">
@@ -11,26 +11,22 @@
       <!-- Add a new talk -->
       <form class="new-talk">
         <input type="text" name="name" placeholder="Your Name" />
-        <input type="text" name="type" placeholder="Talk Type" />
-  <!--       <select>
-          <option>Hot Dog, Fries and a Soda</option>
-          <option>Burger, Shake and a Smile</option>
-          <option>Sugar, Spice and all things nice</option>
-        </select> -->
+        <!-- <input type="text" name="type" placeholder="Talk Type" /> -->
+        <select name="type">
+          <option value="Lightning Talk">Lightning Talk</option>
+          <option value="Announcement">Announcement</option>
+          <option value="Upcoming Event">Upcoming Event</option>
+        </select>
         <input type="text" name="description" placeholder="Description" />
         <input type="text" name="url" placeholder="URL" />
         <input type="submit" value="Add Talk">
       </form>
-
-    
-
 
       <!-- Add a new member -->
        <form class="new-member">
         <input type="text" name="name" placeholder="Your Name" />
         <input type="submit" value="Add Member">
       </form>
-
     </header>
 
   
@@ -38,8 +34,6 @@
     {{#each user}}
       {{> member}}
     {{/each}}
-
-<!--    {{> members}} -->
 
    <h2>Talks</h2>
    <ul>
@@ -54,7 +48,7 @@
         {{> task}}
       {{/each}}
     </ul> -->
-<!--   </div> -->
+  </div>
 </body>
 
 
@@ -91,7 +85,6 @@
 
 <template name="member">
     <!-- Move to own template -->
-    <div class="container-fluid">
         <div class="row">
             <!-- Card Projects -->
             <div class="col-md-3">
@@ -128,17 +121,16 @@
 
                     <button class="delete-member">&times;</button>
                     
-                   <!--  <div class="card-action">
+                    <div class="card-action">
                         <a href="#" target="new_blank">Link</a>
                         <a href="#" target="new_blank">Link</a>
                         <a href="#" target="new_blank">Link</a>
                         <a href="#" target="new_blank">Link</a>
                         <a href="#" target="new_blank">Link</a>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <template name="thetalk">
