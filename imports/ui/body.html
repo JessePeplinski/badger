@@ -38,7 +38,8 @@
                     <th>Name</th>
                     <th>Type</th>
                     <th>Description</th>
-                    <th></th>
+                    <th>Created At</th>
+                    <th>Submit / Delete</th>
                 </tr>
             </thead>
             <tfoot>
@@ -151,10 +152,13 @@
 </template>
 <template name="thetalk">
     <tr {{hidden}}>
-    <td class="lightning">{{name}}</td>
-    <td class="type">{{type}}</td>
-    <td class="description"><a href ="{{url}}">{{description}}</a></td>
-    <button form="my_form" class="submit-talk">Submit</button>
-    <button class="delete-talk">&times;</button>
+        <td class="lightning">{{name}}</td>
+        <td class="type">{{type}}</td>
+        <td class="description"><a href ="{{url}}">{{description}}</a></td>
+        <td class="createdAt">{{createdAt}}</td>
+        <td>
+            <button class="submit-talk">Submit</button>
+            <button class="delete-talk">&times;</button>
+        </td>
     </tr>
 </template>

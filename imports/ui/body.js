@@ -24,11 +24,12 @@ Template.body.helpers({
     //   return Tasks.find({});
     // },
     talk() {
-            return Talk.find({});
-        },
-        user() {
-            return User.find({});
-        },
+        return Talk.find({});
+    },
+
+    user() {
+        return User.find({});
+    },
 });
 
 // Template.body.events({
@@ -52,7 +53,15 @@ Template.body.helpers({
 // });
 
 
+// Attempt to format
+// $(".createdAt").html(function(index, value) {
+//     return moment(value, "YYYY-MM-DDTHH:mm:ss").format("dddd");
+// });
+
+
 Template.body.events({
+
+
     'submit .new-talk' (event) {
         // Prevent default browser form submit
         event.preventDefault();
@@ -62,11 +71,15 @@ Template.body.events({
         var theDescription = event.target.description.value;
         var theUrl = event.target.url.value;
 
+        if(theName === "" || theDescription === "") {
+            alert("Empty fields!");
+        }
+
         if (theType === "invalidtalk") {
             alert("Enter a talk type!");
-        } else {
+        }
 
-
+        else {
             // TODO insert createdAt into db
             // TODO create completed at into db
             Talk.insert({
@@ -74,8 +87,9 @@ Template.body.events({
                 type: theType,
                 description: theDescription,
                 url: theUrl,
+                createdAt: new Date(),
                 hidden: "false",
-                addedToUser: 0
+                adminApproved: 0
             });
 
             // Clear form after being added to db
