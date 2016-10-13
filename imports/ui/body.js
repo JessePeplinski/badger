@@ -49,21 +49,28 @@ Template.body.events({
     var theType = event.target.type.value;
     var theDescription = event.target.description.value;
     var theUrl = event.target.url.value;
-    
 
-    Talk.insert({
-        name: theName,
-        type: theType,
-        description : theDescription,
-        url: theUrl,
-        hidden: "false",
-        addedToUser : 0
-    });
+    if(theType === "invalidtalk") {
+      alert("Enter a talk type!");
+    }
+    
+    else {
+
+      Talk.insert({
+          name: theName,
+          type: theType,
+          description : theDescription,
+          url: theUrl,
+          hidden: "false",
+          addedToUser : 0
+      });
+
+      event.target.reset();
+    }
  
     // Clear form after being added to db
-    target.name.value = '';
-    target.type.value = '';
-    target.url.value = '';
+   
+
   },
 
   'submit .new-member'(event) {
@@ -78,11 +85,10 @@ Template.body.events({
         lightningCount: 0,
         eventCount: 0,
         announcementCount: 0
-
     });
  
     // Clear form after being added to db
-    target.name.value = '';
+    event.target.reset();
   },
 
    // Delete the talk
